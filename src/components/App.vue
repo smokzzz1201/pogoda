@@ -4,13 +4,13 @@
        <h1>Погода</h1>
 
        <h3>Добавить город</h3>
-             <input type="text" style = "width:300px;font-size:25px;" v-model="gorodAdd"> <button v-on:click="addWCity" >Добавить город </button>
+             <input type="text" style = "width:300px;font-size:25px;" v-model="gorodAdd"> <button v-on:click="Gorod" >Добавить город </button>
                     <pre> </pre>
                      <h3>Выбрать город</h3>
                <select v-model="gorod" style = "width:300px;font-size:25px;">
                         <option  v-for="city in cities" v-bind:key="city" v-bind:value="city">{{ city}}</option>
                     </select>
-                    <button v-on:click="getWeather">Посмотреть погоду</button>
+                    <button v-on:click="Pogoda">Посмотреть погоду</button>
             
       </div>
   <pre> </pre>
@@ -56,7 +56,7 @@
         },
         methods:{
          
-            getWeather: function() {
+            Pogoda: function() {
                  axios.get("https://api.openweathermap.org/data/2.5/weather?q="+this.gorod+"&appid=7914d5a440960cfd5df3bd0388a7ad0f", {
                           units: "metric",
                 })
@@ -66,7 +66,7 @@
                     
                 })
             },
-            addWCity: function(){
+            Gorod: function(){
                 this.cities.push(this.gorodAdd)
                 localStorage.setItem("cities",JSON.stringify(this.cities))
             },
